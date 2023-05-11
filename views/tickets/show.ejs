@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+<h2>Tickets</h2>
+<table>
+    <thead>
+        <tr>    
+            <th>Seat</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% tickets.forEach(function(t) { %>
+        <tr> 
+            <td><%= t.seat% ></td>
+            <td><%= t.price %></td>
+        
+        </tr>
+       <% })  %>
+    </tbody>
+</table>
+<h3>Enter a New Ticket</h3>
+
+<%- include('../partials/footer') %>

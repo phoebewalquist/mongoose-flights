@@ -1,11 +1,12 @@
 const Flight = require('../models/flight');
-
+const Ticket = require('../models/ticket');
+ 
 
 module.exports = {
   index,
+  show,
   new: newFlight,
   create,
-  show
 };
 
 
@@ -25,6 +26,18 @@ function index(req, res) {
       res.redirect('/');
     });
 }
+
+
+async function show(req, res, next) {
+  try {
+    const flight = await Flight.findById(req.params.id);
+    const tickets = await Ticket.find({ flight: flight._id });
+    res.render('flights/show', { flight, tickets });
+  } catch (err) {
+    next(err);
+  }
+}
+
 
 function newFlight(req, res) {
   res.render('flights/new', {
@@ -47,13 +60,3 @@ async function create(req, res) {
     res.render('flights/new', { errorMsg: err.message });
   }
 }
-
-async function show(req, res) {
-  try {
-    const flight = await Flight.findById(req.params.id);
-    res.render('flights/show', { flight });
-  } catch(err) {
-    console.log(err);
-    res.redirect('/flights');
-  }
-};
