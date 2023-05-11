@@ -21,4 +21,4 @@ flight: {
 });
 
 
-module.exports = mongoose.ticket('Ticket', ticketSchema);
+module.exports = mongoose.model('Ticket', ticketSchema); 
