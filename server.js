@@ -29,17 +29,6 @@ app.use('/flights', flightsRouter);
 app.use('/destinations', destinationsRouter);
 
 
-// app.get('/flights/:id', (req, res) => {
-//   Flight.findById(req.params.id).populate('destinations').exec((err, flight) => {
-//     if (err) {
-//       console.log(err);
-//       res.redirect('/flights');
-//     } else {
-//       res.render('flights/show', { flight });
-//     }
-//   });
-// });
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
