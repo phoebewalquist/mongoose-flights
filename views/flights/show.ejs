@@ -11,15 +11,6 @@
     <div><%= flight.departs %></div>
 </section>
 
-<!-- <h3>Add a New Ticket</h3>
-<form action="/flights/<%= flight._id %>/tickets/new" method="POST">
-  <label>Seat:</label>
-  <input type="text" name="seat">
-  <label>Price:</label>
-  <input type="number" name="price">
-  <button type="submit">Add Ticket</button>
-</form> -->
-
 <h2>Tickets</h2>
 <table>
     <thead>
@@ -47,6 +38,24 @@
     </label><br>
     <button type="submit">Add Ticket</button>
 </form>
+
+<h3>Add Destination</h3>
+<form id="add-destination-form" method="POST" action="/flights/<%= flight.id %>/destination">
+    <label>Destination:
+        <input type="text" name="airport" required>
+    </label><br>
+    <label>Arrival Date/Time:
+        <input type="datetime-local" name="arrival" required>
+    </label><br>
+    <button type="submit">Add Destination</button>
+</form>
+
+<h3>Destinations</h3>
+<ul>
+  <% flight.destinations.forEach(function(d) { %>
+  <li><%= d.airport %> - <%= d.arrival %></li>
+  <% }) %>
+</ul>
 
 
 <%- include('../partials/footer') %>

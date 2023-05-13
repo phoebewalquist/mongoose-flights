@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/flights', flightsRouter);
-app.use('/destinations', destinationsRouter);
+app.use('/', destinationsRouter);
 
 app.use('/', ticketsRouter);
 

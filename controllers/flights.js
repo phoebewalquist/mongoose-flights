@@ -7,6 +7,7 @@ module.exports = {
   show,
   new: newFlight,
   create,
+  createDestination,
 };
 
 
@@ -60,3 +61,17 @@ async function create(req, res) {
     res.render('flights/new', { errorMsg: err.message });
   }
 }
+
+
+
+  async function createDestination(req, res) {
+    console.log('req.body');
+    try {
+        const flight = await Flight.findById(req.params.id);
+        flight.destinations.push(req.body)
+        await flight.save()
+        res.redirect(`/flights/${req.params.id}`);
+        } catch (err) {
+          res.redirect(`/flight/${req.params.id}`);
+        }
+  }
